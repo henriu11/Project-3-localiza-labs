@@ -12,6 +12,8 @@ namespace Vaquinha.Unit.Tests.ControllerTests
 
         public HomeControllerTests()
         {
+            _logger = new Mock<ILogger<HomeController>>();
+            
 
         }
     }

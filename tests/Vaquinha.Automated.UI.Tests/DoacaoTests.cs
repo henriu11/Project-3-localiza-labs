@@ -33,7 +33,7 @@ namespace Vaquinha.AutomatedUITests
 		public void DoacaoUI_AcessoTelaHome()
 		{
 			// Arrange
-			_driverFactory.NavigateToUrl("https://vaquinha.azurewebsites.net/");
+			_driverFactory.NavigateToUrl("https://localhost:5001");
 			_driver = _driverFactory.GetWebDriver();
 
 			// Act
@@ -57,6 +57,8 @@ namespace Vaquinha.AutomatedUITests
 			IWebElement webElement = null;
 			webElement = _driver.FindElement(By.ClassName("btn-yellow"));
 			webElement.Click();
+			IWebElement campoNome = _driver.FindElement (By.Id("DadosPessoais_Nome"));
+			campoNome.SendKeys(doacao.DadosPessoais.Nome);
 
 			//Assert
 			_driver.Url.Should().Contain("/Doacoes/Create");

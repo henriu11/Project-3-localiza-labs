@@ -157,13 +157,35 @@ namespace Vaquinha.Unit.Tests.DomainTests
             // Act
             var valido = doacao.Valido();
 
-            // Assert
+            // Assert 
             valido.Should().BeFalse(because: "os campos da doação nao foram informados");
 
             doacao.ErrorMessages.Should().HaveCount(2, because: "Os 2 campos obrigatórios da doação não foram preenchidos");
 
             doacao.ErrorMessages.Should().Contain("Valor mínimo de doação é de R$ 5,00", because: "valor mínimo de doação nao foi atingido.");            
             doacao.ErrorMessages.Should().Contain("O campo Email é obrigatório.", because: "o campo Email não foi informado.");            
+        }
+        [Theory]
+        [InlineData(500)]
+        [InlineData(200)]
+        [InlineData(100)]
+        [InlineData(100.1)]
+        [InlineData(1000)]
+        [InlineData(4500)]
+        [Trait("Doacao", "Doacao_UsuarioAceitaPagarComTaxa_DoacaoValida")]
+        public void Doacao_UsuarioAceitaPagarComTaxa_DoacaoValida(double valorDoacao)
+        {           
+            // Arrange
+            var doacao = _doacaoFixture.DoacaoValida(false,valorDoacao,false,true);
+            doacao.AdicionarEnderecoCobranca(_enderecoFixture.EnderecoValido());
+            doacao.AdicionarFormaPagamento(_cartaoCreditoFixture.CartaoCreditoValido());
+
+            // Act
+            var valido = doacao.Valido();
+
+            // Assert
+            doacao.Valor.Should().Be(valorDoacao*1.2,because: "valaor com taxa de 20%");
+            
         }
 
     }

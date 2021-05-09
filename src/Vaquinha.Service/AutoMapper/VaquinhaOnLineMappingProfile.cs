@@ -19,7 +19,8 @@ namespace Vaquinha.Service.AutoMapper
                 .ForMember(dest => dest.Nome, m => m.MapFrom(src => src.DadosPessoais.Nome))
                 .ForMember(dest => dest.Anonima, m => m.MapFrom(src => src.DadosPessoais.Anonima))
                 .ForMember(dest => dest.MensagemApoio, m => m.MapFrom(src => src.DadosPessoais.MensagemApoio))
-                .ForMember(dest => dest.Valor, m => m.MapFrom(src => src.Valor))             
+                .ForMember(dest => dest.Valor, m => m.MapFrom(src => src.Valor))
+                .ForMember(dest => dest.AceitaTaxa, m => m.MapFrom(src => src.AceitaTaxa))             
                 .ForMember(dest => dest.DataHora, m => m.MapFrom(src => src.DataHora));
 
             CreateMap<PessoaViewModel, Pessoa>()

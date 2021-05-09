@@ -9,18 +9,22 @@
 
     <div class="text-center">
         <h2>Doe agora</h2>
-
-        <hr />
         <center>
+             <div class="col-md-7">
+                <div class="form-group float-right">
+                    <label asp-for="AceitaTaxa" class="control-label"></label>
+                    <input asp-for="AceitaTaxa" />
+                 </div>
+            </div>  
+            <hr />
             <div class="col-md-3">
                 <div class="form-group">
                     <label asp-for="Valor" class="control-label"></label>
                     <input asp-for="Valor" id="valor" placeholder="Valor doação" class="form-control" />
                 </div>
-            </div>
-            <hr />
+            </div>            
         </center>
-
+        <hr />
     </div>
 
     <div class="row">

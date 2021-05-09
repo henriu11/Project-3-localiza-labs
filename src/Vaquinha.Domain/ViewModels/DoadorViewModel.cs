@@ -19,6 +19,7 @@ namespace Vaquinha.Domain.ViewModels
         public string MensagemApoio { get; set; }
 
         public decimal Valor { get; set; }
+        public bool AceitaTaxa { get; set; }
 
         public DateTime DataHora { get; set; }
 
